@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class HotelBookingTest {
 
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = setDriverPath();
 
     @FindBy(linkText = "Hotels")
     private WebElement hotelLink;
@@ -44,10 +44,12 @@ public class HotelBookingTest {
         }
         if (PlatformUtil.isWindows()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+            driver = new ChromeDriver();
         }
         if (PlatformUtil.isLinux()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
         }
+        return driver;
     }
 
 }
