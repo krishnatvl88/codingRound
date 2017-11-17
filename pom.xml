@@ -24,5 +24,6 @@
       <version>6.11</version>
       <scope>compile</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
   </dependencies>
 </project>
