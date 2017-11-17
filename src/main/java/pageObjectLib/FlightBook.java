@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-import GenericLib.Driver;
 import GenericLib.WebDriverCommonLib;
 
 public class FlightBook extends WebDriverCommonLib{
@@ -33,7 +32,6 @@ public class FlightBook extends WebDriverCommonLib{
     private WebElement searchBtn;
 	
 	public void bookFlight(){
-		Driver.driver.get("https://www.cleartrip.com/");
 		waitFor(2000);
 		oneWay.click();
 		fromTag.clear();
