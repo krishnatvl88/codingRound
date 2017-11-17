@@ -49,7 +49,5 @@ public class FlightBook extends WebDriverCommonLib{
 		departDate.click();
 		searchBtn.click();
 		Assert.assertTrue(isElementPresent(By.className("searchSummary")));
-		
-		Driver.driver.quit();
 	}
 }
