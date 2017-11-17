@@ -35,25 +35,17 @@ public class ClearTripTests {
 	
 	@Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-
-    	//driver.get();
-
     	signInPage.checkSingIn();
     }
 	
 	@Test
     public void testThatResultsAppearForAOneWayJourney() {
- 
-    	//driver.get("https://www.cleartrip.com/");
     	flightBookPage.bookFlight();
     }
 	
 	@Test
     public void shouldBeAbleToSearchForHotels() {
-
-    	//driver.get("https://www.cleartrip.com/");
-    	hotelBookPage.searchHotels();
-        
+    	hotelBookPage.searchHotels();        
     }
 	
 	@AfterClass
