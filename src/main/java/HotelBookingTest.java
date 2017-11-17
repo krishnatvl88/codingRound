@@ -1,55 +1,41 @@
-import com.sun.javafx.PlatformUtil;
+import pageObjectLib.HotelBook;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import GenericLib.Driver;
 
 public class HotelBookingTest {
 
-    WebDriver driver = setDriverPath();
-
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
-
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
-
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-
+	//driver initiation
+	public static WebDriver driver;
+	
+	
+	HotelBook hotelBookPage;
+	
+	@BeforeClass
+	public void configBeforClass(){
+		//browser call
+		driver = Driver.setBrowser();
+		
+		//pagefactory initiation
+		hotelBookPage = PageFactory.initElements(driver, HotelBook.class);
+	}
+	
+	
     @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
 
-        driver.get("https://www.cleartrip.com/");
-        hotelLink.click();
-
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-
-        new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
-        searchButton.click();
-
-        driver.quit();
-
+    	driver.get("https://www.cleartrip.com/");
+    	hotelBookPage.searchHotels();
+        
     }
-
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-            driver = new ChromeDriver();
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-        return driver;
+    
+    @AfterClass
+   	public void configAfterClass(){
+       	driver.quit();
     }
-
 }
